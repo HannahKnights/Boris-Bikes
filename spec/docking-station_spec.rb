@@ -35,4 +35,13 @@ describe DockingStation do
     docking_station.dock(bike.break)
     expect(lambda{docking_station.release}).to raise_error
   end 
+
+  it "should provide a list of available bikes" do
+    working_bike, broken_bike = Bike.new, Bike.new
+    broken_bike.break
+    docking_station.dock(working_bike)
+    docking_station.dock(broken_bike)
+    expect(docking_station.available_bikes).to eq([working_bike])
+  end
+
 end
