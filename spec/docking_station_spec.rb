@@ -5,8 +5,7 @@ require_relative "../lib/bike"
 describe DockingStation do
 
   let(:bike) {Bike.new}
-  CAPACITY = 20
-
+  
   let(:docking_station) {DockingStation.new(:capacity => CAPACITY)}
 
 

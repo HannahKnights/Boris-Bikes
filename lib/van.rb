@@ -1,6 +1,7 @@
 require_relative "bike_container"
+require_relative "bike"
 
-class DockingStation
+class Van
 
     include BikeContainer
 
@@ -10,5 +11,10 @@ class DockingStation
         @capacity = options.fetch(:capacity, DEFAULT_CAPACITY)
         @bikes ||= []
     end
+
+    def move_bikes_to_garage(garage)
+      garage.bikes = bikes
+    end
+
 end
 

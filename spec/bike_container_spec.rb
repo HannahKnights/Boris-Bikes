@@ -69,7 +69,7 @@ describe BikeContainer do
   end
 
   it "should provide a list of broken bikes" do
-  bike
+  bike.break
   holder.dock(bike)
   expect(holder.repairs_needed?).to be_true
   end
