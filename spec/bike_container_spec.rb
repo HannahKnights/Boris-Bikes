@@ -19,12 +19,23 @@ describe BikeContainer do
 
 
   it "should know if it has space for a bike" do
-    expect(holder.full?).to be_true
+    10.times{holder.dock(bike)}
+    expect(holder.full?).not_to be_true
   end
 
+  it "should know if the holder is empty" do
+    expect(holder.empty?).to be_true
+  end
+
+  # it "should not take anything other than a bike" do
+  #   holder.dock(bike)
+  #   bike.class != Bike
+  #   expect(holder.dock(bike)).to eq "This is not a bike! |:^0 }{"
+  # end
+
   it "should know if it doesn't have space for a bike" do
-    CAPACITY.times{holder.dock(bike)}
-    expect(holder.full?).to be_true
+    30.times{holder.dock(bike)}
+    expect{holder.dock(bike)}.to raise_error "The Station is at full capacity"
   end
   
   it "should not be able to dock a bike if full" do
@@ -50,6 +61,17 @@ describe BikeContainer do
     holder.dock(working_bike)
     holder.dock(broken_bike)
     expect(holder.available_bikes).to eq([working_bike])
+  end
+
+  it "should raise an error if the bike does not exist" do
+    bike_count = 0
+    expect {release(bike)}.to raise_error
+  end
+
+  it "should provide a list of broken bikes" do
+  bike
+  holder.dock(bike)
+  expect(holder.repairs_needed?).to be_true
   end
 
 end
