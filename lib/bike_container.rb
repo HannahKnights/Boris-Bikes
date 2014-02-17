@@ -19,7 +19,6 @@ module BikeContainer
     def dock(bike)
         # return "This is not a bike! |:^0 }{" if bike.class != Bike  
         capacity > bikes.count ? bikes << bike : (raise "The Station is at full capacity")
-     # bikes.each do |bike|
       #   if capacity > bikes.count
       #       bikes << bike
       #   else

@@ -13,8 +13,15 @@ class Van
     end
 
     def move_bikes_to_garage(garage)
-      garage.bikes = bikes
+      broken_bikes = bikes.select{ |bike| bike.broken? }
+      garage.bikes = broken_bikes
     end
+
+
+    # def move_bikes_to_garage(garage)
+    #   broken_bikes = bikes.select{ |bike| bike.broken? }
+    #   garage.bikes = broken_bikes
+    # end
 
 end
 
